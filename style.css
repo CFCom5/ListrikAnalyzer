@@ -1,0 +1,37 @@
+body {
+    background-image: url('img/bg1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 80px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+.form-group { 
+    margin-bottom: 1rem; 
+}
+
+#total-harga { 
+    margin-top: 1rem; 
+}
+
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+    margin: 1.75rem auto;
+}
+
+@media (max-width: 767.98px) {
+    body {
+        background-image: url('img/bg1.png');
+        background-size: 500%; /* Atur ukuran background untuk layar kecil */
+        background-repeat: no-repeat;
+        background-position: center top;
+    }
+}
