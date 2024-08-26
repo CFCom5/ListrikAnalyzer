@@ -65,7 +65,7 @@ body.loaded #loading {
 
 @media (max-width: 767.98px) {
     body {
-        background-image: url('img/bg1.png');
+        background-image: url('../img/bg1.png');
         background-size: 500%; /* Atur ukuran background untuk layar kecil */
         background-repeat: no-repeat;
         background-position: center top;
