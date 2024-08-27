@@ -1,99 +1,73 @@
-    html, body {
-        height: 100%; /* Memastikan html dan body memiliki tinggi 100% */
-        margin: 0;
-    }
+body {
+    background-image: url('../img/bg1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 100px;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden; /* Mencegah scroll saat loading aktif */
+    transition: opacity 0.5s ease-out; /* Transisi untuk efek fade-out */
+}
+.about-us-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+}
 
+#loading {
+    display: flex; /* Menampilkan loading */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1); /* Latar belakang putih penuh */
+    z-index: 9999; /* Pastikan loading berada di atas konten lainnya */
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-out; /* Transisi untuk efek fade-out */
+}
+
+/* Efek transisi saat loading selesai */
+body.loaded #loading {
+    opacity: 0; /* Membuat loading menjadi transparan */
+}
+
+#loading img {
+    width: 100px; /* Atur ukuran loading sesuai kebutuhan */
+    height: auto;
+}
+
+.about-us-container {
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-container h1 {
+    margin-bottom: 20px;
+}
+
+.about-us-container p {
+    font-size: 16px;
+    color: #333;
+}
+
+.dropdown {
+    position: fixed;
+    top: 20px; /* Jarak dari atas */
+    right: 20px; /* Jarak dari kanan */
+}
+
+@media (max-width: 767.98px) {
     body {
-        background-image: url('../img/bg1.png');
-        background-size: cover;
+        background-image: url('img/bg1.png');
+        background-size: 500%; /* Atur ukuran background untuk layar kecil */
         background-repeat: no-repeat;
-        font-family: 'Montserrat', sans-serif;
-        overflow: hidden; /* Mencegah scroll saat loading aktif */
-        transition: opacity 0.5s ease-out; /* Transisi untuk efek fade-out */
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; /* Memastikan body setidaknya setinggi viewport */
-        margin: 0; /* Menghapus margin untuk memastikan background full */
+        background-position: center top;
     }
-
-    .about-us-container {
-        flex: 1; /* Membuat kontainer mengisi ruang yang tersedia */
-        background: rgba(255, 255, 255, 0.9);
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-width: 800px;
-        margin: 40px auto;
-        text-align: center;
-    }
-
-    .about-us-container h1 {
-        margin-bottom: 20px;
-        font-weight: 700;
-        color: #333;
-    }
-
-    .about-us-container p {
-        font-size: 16px;
-        color: #555;
-        line-height: 1.6;
-    }
-
-    /* Loading Screen */
-    #loading {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 1);
-        z-index: 9999;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.5s ease-out;
-    }
-
-    body.loaded #loading {
-        opacity: 0;
-        pointer-events: none; /* Mencegah interaksi setelah loading selesai */
-    }
-
-    #loading img {
-        width: 100px;
-        height: auto;
-    }
-
-    .dropdown {
-        position: fixed;
-        top: 20px; /* Jarak dari atas */
-        right: 20px; /* Jarak dari kanan */
-    }
-
-    footer {
-        flex-shrink: 0; /* Pastikan footer tetap berada di bagian bawah */
-        padding: 1rem;
-        text-align: center;
-        width: 100%;
-    }
-
-    @media (max-width: 767.98px) {
-        body {
-            background-size: 500%;
-            background-position: center top;
-        }
-
-        .about-us-container {
-            padding: 20px;
-            margin: 20px auto;
-        }
-
-        footer {
-            padding: 0.5rem;
-        }
-    }
-
-    .container.about-us-container {
-        flex: 1; /* Membuat container mengisi ruang yang tersedia */
-        margin-top: 20px;
-    }
+}
