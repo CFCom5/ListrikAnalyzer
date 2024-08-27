@@ -7,14 +7,52 @@ body {
     overflow: hidden; /* Mencegah scroll saat loading aktif */
     transition: opacity 0.5s ease-out; /* Transisi untuk efek fade-out */
 }
-
-.about-us-container {
-    background: white;
-    padding: 40px;
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 40px auto;
+    margin-top: 20px;
+}
+
+.form-group { 
+    margin-bottom: 1rem; 
+}
+
+#total-harga { 
+    margin-top: 1rem; 
+}
+
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+    margin: 1.75rem auto;
+}
+
+@media (max-width: 767.98px) {
+    body {
+        background-image: url('img/bg1.png');
+        background-size: 500%; /* Atur ukuran background untuk layar kecil */
+        background-repeat: no-repeat;
+        background-position: center top;
+    }
+}
+
+.explanation {
+    background-color: rgba(255, 255, 255, 0.8); /* Latar belakang putih dengan sedikit transparansi */
+    border-radius: 10px; /* Sudut yang melengkung */
+    font-size: 14px; /* Ukuran font yang nyaman dibaca */
+    color: #333; /* Warna teks */
+    padding: 15px; /* Ruang di dalam kotak */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan pada kotak */
+    max-width: 600px; /* Batas lebar penjelasan */
+    margin: 0 auto; /* Agar berada di tengah */
+}
+
+.dropdown {
+    position: fixed;
+    top: 20px; /* Jarak dari atas */
+    right: 20px; /* Jarak dari kanan */
 }
 
 #loading {
@@ -39,36 +77,4 @@ body.loaded #loading {
 #loading img {
     width: 100px; /* Atur ukuran loading sesuai kebutuhan */
     height: auto;
-}
-
-.about-us-container {
-    padding: 20px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.about-us-container h1 {
-    margin-bottom: 20px;
-}
-
-.about-us-container p {
-    font-size: 16px;
-    color: #333;
-}
-
-.dropdown {
-    position: fixed;
-    top: 20px; /* Jarak dari atas */
-    right: 20px; /* Jarak dari kanan */
-}
-
-@media (max-width: 767.98px) {
-    body {
-        background-image: url('img/bg1.png');
-        background-size: 500%; /* Atur ukuran background untuk layar kecil */
-        background-repeat: no-repeat;
-        background-position: center top;
-    }
 }
