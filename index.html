@@ -193,7 +193,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary btn-block mt-4" onclick="hitungPerubahanDaya()">Hitung Harga</button>
+                            <div id="errorPerubahanDaya" class="text-danger" style="display: none;"></div>
+                        <button type="button" class="btn btn-primary btn-block mt-4" onclick="hitungPerubahanDaya()">Hitung Harga</button>
                         </form>
                         <div id="resultPerubahanDaya" class="mt-4"></div>
                     </div>
@@ -227,7 +228,9 @@
         </div>
     </footer>
     <div id="loading">
-        <img src="img/loading.gif" alt="Loading...">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden"></span>
+        </div>
     </div>   
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
