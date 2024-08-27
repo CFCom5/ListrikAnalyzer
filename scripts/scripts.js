@@ -122,10 +122,28 @@ function hitungPasangBaru() {
 
 
 function hitungPerubahanDaya() {
+    // Ambil nilai daya lama dan daya baru
     var dayaLama = parseInt(document.getElementById('dayaLama').value);
     var dayaBaru = parseInt(document.getElementById('dayaBaru').value);
+    
+    // Ambil elemen untuk menampilkan pesan error
+    var errorDiv = document.getElementById('errorPerubahanDaya');
+    
+    // Cek apakah daya lama lebih besar dari daya baru
+    if (dayaLama > dayaBaru) {
+        // Tampilkan pesan error
+        errorDiv.innerHTML = "Daya lama tidak boleh lebih besar dari daya baru.";
+        errorDiv.style.display = 'block';
+        return; // Hentikan fungsi jika ada error
+    } else {
+        // Sembunyikan pesan error jika tidak ada error
+        errorDiv.style.display = 'none';
+    }
+
+    // Lanjutkan dengan logika perhitungan harga yang sudah ada...
     var jenisPembayaran = document.getElementById('jenisPembayaranPerubahanDaya').value;
     var token = document.getElementById('tokenPerubahanDaya') ? parseInt(document.getElementById('tokenPerubahanDaya').value) : 0;
+
     
     // Daftar biaya perubahan daya
     var biayaPerubahan = {
