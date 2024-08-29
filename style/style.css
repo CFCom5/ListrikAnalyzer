@@ -2,8 +2,9 @@ body {
     background-image: url('../img/bg1.png');
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 130vh; /* Minimum height set to 100% of the viewport height */
-    margin: 0; /* Remove any default margin */
+    min-height: 150vh; /* Minimum height set to 100% of the viewport height */
+    margin: 0;
+    padding: 38px; /* Remove any default margin */
 }
 
 .card {
@@ -41,7 +42,7 @@ footer {
 @media (max-width: 767.98px) {
     body {
         background-image: url('../img/bg1.png');
-        background-size: 500%; /* Atur ukuran background untuk layar kecil */
+        background-size: 600%; /* Atur ukuran background untuk layar kecil */
         background-repeat: no-repeat;
         background-position: center top;
     }
@@ -75,5 +76,22 @@ footer {
     .navbar-nav.ms-auto {
         margin-left: auto;
     }
-    
+    .navbar {
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link {
+        transition: color 0.3s ease;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        color: #333;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: #fff;
+        background-color: #343a40;
+        border-radius: 10px;
+    }
+
     
