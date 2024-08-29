@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listrik Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <!-- Nama Brand -->
+                <a class="navbar-brand order-1 order-lg-0" href="#">
+                    Listrik Analyzer
+                </a>
+    
+                <!-- Toggler -->
+                <button class="navbar-toggler order-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Links -->
+                <div class="collapse navbar-collapse order-3 order-lg-1" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container d-flex justify-content-center align-items-center" style="flex-grow: 1; height: 100vh; margin-top: 100px;">
+        <div class="card p-4 shadow-lg text-center" style="width: 100%; max-width: 500px; max-height: 200vh; overflow-y: auto;">
+            <!-- Logo di dalam Card -->
+            <div class="mb-4">
+                <img src="logo/logo2.png" alt="Logo" style="width: 60px;">
+            </div>
+            
+            <h2 class="card-title">Hitung Harga Permohonan Listrik</h2>
+
+            <!-- Tombol untuk Pasang Baru dan Perubahan Daya -->
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Pilih Jenis Permohonan</h5>
+                    <div class="d-flex justify-content-center mb-3">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPasangBaru">
+                            <i class="fas fa-plug"></i> Pasang Baru
+                        </button>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalPerubahanDaya">
+                            <i class="fas fa-bolt"></i> Perubahan Daya
+                        </button>
+                    </div>
+                </div>
+                <div class="container mt-4 text-center">
+                    <p class="text-muted">Ini hanya simulasi. Untuk permohonan resmi, silakan unduh aplikasi PLN Mobile di Google Play Store atau Apple App Store.</p>
+                
+                    <!-- Logo Unduhan -->
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-inline-block mx-2">
+                            <a href="https://play.google.com/store/apps/details?id=com.icon.pln123&hl=id" target="_blank">
+                                <img src="logo/gpandroid.png" alt="Download on Google Play" style="width: 120px;">
+                            </a>
+                        </div>
+                
+                        <div class="d-inline-block mx-2">
+                            <img src="logo/plnmobile.png" alt="Logo PLN" style="width: 70px;">
+                        </div>
+                
+                        <div class="d-inline-block mx-2">
+                            <a href="https://apps.apple.com/id/app/pln-mobile/id1234567890" target="_blank">
+                                <img src="logo/gpapple.png" alt="Download on the App Store" style="width: 95px; margin-right: 10px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    
+        <!-- Modal Pasang Baru -->
+        <div class="modal fade" id="modalPasangBaru" tabindex="-1" role="dialog" aria-labelledby="modalPasangBaruLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPasangBaruLabel">Pasang Baru</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formPasangBaru">
+                            <div class="form-group">
+                                <label for="dayaPasangBaru">Daya (VA):</label>
+                                <select name="daya" id="dayaPasangBaru" class="form-control" required>
+                                    <option value="">Pilih Daya</option>
+                                    <option value="450">450 VA</option>
+                                    <option value="900">900 VA</option>
+                                    <option value="1300">1.300 VA</option>
+                                    <option value="2200">2.200 VA</option>
+                                    <option value="3500">3.500 VA</option>
+                                    <option value="4400">4.400 VA</option>
+                                    <option value="5500">5.500 VA</option>
+                                    <option value="6600">6.600 VA</option>
+                                    <option value="7700">7.700 VA</option>
+                                    <option value="10600">10.600 VA</option>
+                                    <option value="11000">11.000 VA</option>
+                                    <option value="13200">13.200 VA</option>
+                                    <option value="16500">16.500 VA</option>
+                                    <option value="23000">23.000 VA</option>
+                                    <option value="33000">33.000 VA</option>
+                                    <option value="41500">41.500 VA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="jenisPembayaranPasangBaru">Jenis Pembayaran:</label>
+                                <select name="jenis_pembayaran" id="jenisPembayaranPasangBaru" class="form-control" onchange="toggleTokenPasangBaru()" required>
+                                    <option value="">Pilih Jenis Pembayaran</option>
+                                    <option value="prabayar">Prabayar</option>
+                                    <option value="pasca_bayar">Pasca Bayar</option>
+                                </select>
+                            </div>
+                            <div id="tokenPasangBaruDiv" style="display: none;">
+                                <div class="form-group">
+                                    <label for="tokenPasangBaru">Token:</label>
+                                    <select name="token" id="tokenPasangBaru" class="form-control">
+                                        <option value="">Pilih Token</option>
+                                        <option value="5000">Rp 5.000</option>
+                                        <option value="20000">Rp 20.000</option>
+                                        <option value="40000">Rp 40.000</option>
+                                        <option value="50000">Rp 50.000</option>
+                                        <option value="100000">Rp 100.000</option>
+                                        <option value="200000">Rp 200.000</option>
+                                        <option value="500000">Rp 500.000</option>
+                                        <option value="1000000">Rp 1.000.000</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="errorPasangBaru" style="display: none; color: red;"></div>
+                            <button type="button" class="btn btn-primary btn-block mt-4" onclick="hitungPasangBaru()">Hitung Harga</button>
+                        </form>
+                        <div id="resultPasangBaru" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal Perubahan Daya -->
+        <div class="modal fade" id="modalPerubahanDaya" tabindex="-1" role="dialog" aria-labelledby="modalPerubahanDayaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPerubahanDayaLabel">Perubahan Daya</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formPerubahanDaya">
+                            <div class="form-group">
+                                <label for="dayaLama">Daya Lama (VA):</label>
+                                <select name="daya_lama" id="dayaLama" class="form-control">
+                                    <option value="">Pilih Daya Lama</option>
+                                    <option value="450">450 VA</option>
+                                    <option value="900">900 VA</option>
+                                    <option value="1300">1.300 VA</option>
+                                    <option value="2200">2.200 VA</option>
+                                    <option value="3500">3.500 VA</option>
+                                    <option value="4400">4.400 VA</option>
+                                    <option value="5500">5.500 VA</option>
+                                    <option value="6600">6.600 VA</option>
+                                    <option value="7700">7.700 VA</option>
+                                    <option value="10600">10.600 VA</option>
+                                    <option value="11000">11.000 VA</option>
+                                    <option value="13200">13.200 VA</option>
+                                    <option value="16500">16.500 VA</option>
+                                    <option value="23000">23.000 VA</option>
+                                    <option value="33000">33.000 VA</option>
+                                    <option value="41500">41.500 VA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dayaBaru">Daya Baru (VA):</label>
+                                <select name="daya_baru" id="dayaBaru" class="form-control">
+                                    <option value="">Pilih Daya Baru</option>
+                                    <option value="450">450 VA</option>
+                                    <option value="900">900 VA</option>
+                                    <option value="1300">1.300 VA</option>
+                                    <option value="2200">2.200 VA</option>
+                                    <option value="3500">3.500 VA</option>
+                                    <option value="4400">4.400 VA</option>
+                                    <option value="5500">5.500 VA</option>
+                                    <option value="6600">6.600 VA</option>
+                                    <option value="7700">7.700 VA</option>
+                                    <option value="10600">10.600 VA</option>
+                                    <option value="11000">11.000 VA</option>
+                                    <option value="13200">13.200 VA</option>
+                                    <option value="16500">16.500 VA</option>
+                                    <option value="23000">23.000 VA</option>
+                                    <option value="33000">33.000 VA</option>
+                                    <option value="41500">41.500 VA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="jenisPembayaranPerubahanDaya">Jenis Pembayaran:</label>
+                                <select name="jenis_pembayaran" id="jenisPembayaranPerubahanDaya" class="form-control" onchange="toggleTokenPerubahanDaya()" required>
+                                    <option value="">Pilih Jenis Pembayaran</option>
+                                    <option value="prabayar">Prabayar</option>
+                                    <option value="pasca_bayar">Pasca Bayar</option>
+                                </select>
+                            </div>
+                            <div id="tokenPerubahanDayaDiv" style="display: none;">
+                                <div class="form-group">
+                                    <label for="tokenPerubahanDaya">Token:</label>
+                                    <select name="token" id="tokenPerubahanDaya" class="form-control">
+                                        <option value="">Pilih Token</option>
+                                        <option value="5000">Rp 5.000</option>
+                                        <option value="20000">Rp 20.000</option>
+                                        <option value="40000">Rp 40.000</option>
+                                        <option value="50000">Rp 50.000</option>
+                                        <option value="100000">Rp 100.000</option>
+                                        <option value="200000">Rp 200.000</option>
+                                        <option value="500000">Rp 500.000</option>
+                                        <option value="1000000">Rp 1.000.000</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="errorPerubahanDaya" class="text-danger" style="display: none;"></div>
+                            <div id="errorPerubahanDaya" style="display: none; color: red;"></div>
+                        <button type="button" class="btn btn-primary btn-block mt-4" onclick="hitungPerubahanDaya()">Hitung Harga</button>
+                        </form>
+                        <div id="resultPerubahanDaya" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </div>
+        
+<footer class="bg-dark text-white mt-5 p-4 fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <p class="mb-0">© 2024 Hitung Harga Permohonan Listrik. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+        <div class="row social-icons">
+            <div class="col text-center">
+                <a href="https://www.facebook.com/ghibran.adean" class="text-white mr-3">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/BangDean2710" class="text-white mr-3">
+                    <img src="logo/x.png" alt="X Logo" style="width: 19px; height: 19px;">
+                </a>
+                <a href="https://www.instagram.com/nandayulandaa/?hl=en" class="text-white mr-3">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    
+</body>
+</html>

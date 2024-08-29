@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/abstyle.css">
+</head>
+<body>
+
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <!-- Nama Brand -->
+                <a class="navbar-brand order-1 order-lg-0" href="#">
+                    Listrik Analyzer
+                </a>
+    
+                <!-- Toggler -->
+                <button class="navbar-toggler order-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Links -->
+                <div class="collapse navbar-collapse order-3 order-lg-1" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container about-us-container mt-5 pt-5">
+        <h1>About Us</h1>
+        <p>
+            Selamat datang di halaman "About Us". Kami adalah tim magang yang bekerja di PLN UP3. Kami terdiri dari empat anggota yaitu M. Ghibran Adean, Nanda Yulanda, Arif Wijaya, dan Clodia Novita Sari. Proyek ini merupakan bagian dari laporan kerja praktik kami di Politeknik Negeri Sriwijaya, jurusan D3 Teknik Komputer.
+        </p>
+        <p>
+            Tujuan dari proyek ini adalah untuk mengembangkan aplikasi yang dapat mempermudah proses perhitungan dan permohonan daya listrik. Kami berkomitmen untuk memberikan solusi yang tepat dan efisien untuk kebutuhan listrik pelanggan.
+        </p>
+        <p>
+            Nama aplikasi kami, <strong>Listrik Analyzer</strong>, dipilih untuk mencerminkan fungsi utama aplikasi ini. "Listrik" merujuk pada bidang utama yang kami tangani, yaitu perhitungan dan manajemen daya listrik. Sementara itu, "Analyzer" menunjukkan bahwa aplikasi ini dirancang untuk menganalisis kebutuhan daya, menghitung biaya, dan memberikan informasi yang berguna untuk pengguna. Nama ini diharapkan dapat mencerminkan keandalan dan kegunaan aplikasi dalam membantu pengguna memahami dan mengelola kebutuhan listrik mereka dengan lebih baik.
+        </p>
+        <p>
+            Jika Anda memiliki pertanyaan lebih lanjut tentang proyek ini atau ingin berdiskusi lebih lanjut, jangan ragu untuk menghubungi kami melalui media sosial dibawah.
+        </p>
+        <!-- Menambahkan Google Maps disini -->
+    </div>
+
+    <footer class="bg-dark text-white mt-5 p-4 fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p class="mb-0">© 2024 Hitung Harga Permohonan Listrik. Semua Hak Dilindungi.</p>
+                </div>
+            </div>
+            <div class="row social-icons">
+                <div class="col text-center">
+                    <a href="https://www.facebook.com/ghibran.adean" class="text-white mr-3">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/BangDean2710" class="text-white mr-3">
+                        <img src="logo/x.png" alt="X Logo" style="width: 19px; height: 19px;">
+                    </a>
+                    <a href="https://www.instagram.com/nandayulandaa/?hl=en" class="text-white mr-3">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loading">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fungsi untuk menampilkan loading
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Mencegah scroll saat loading
+        }
+
+        // Fungsi untuk menyembunyikan loading
+        function hideLoading() {
+            document.body.classList.add('loaded'); // Menambahkan kelas untuk efek transisi
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.body.style.overflow = 'auto'; // Mengizinkan scroll setelah loading
+            }, 500); // Durasi transisi sama dengan waktu opacity transition
+        }
+
+        // Contoh penggunaan fungsi loading
+        document.addEventListener('DOMContentLoaded', function() {
+            showLoading();
+            setTimeout(hideLoading, 2000); // Menyembunyikan loading setelah 2 detik
+        });
+    </script>
+</body>
+</html>
