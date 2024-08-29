@@ -3,15 +3,17 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 125vh;
-    padding-top: 35px; /* Sesuaikan nilai ini sesuai tinggi navbar */
+    padding-top: 35px;
+    margin-top: 40px; /* Sesuaikan nilai ini sesuai tinggi navbar */
+    margin-bottom: 90px;
 }
 
     .about-us-container {
         background: rgba(255, 255, 255, 0.9);
-        padding: 40px;
+        padding: 20px;
         border-radius: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-width: auto;
+        max-width: 90%;
         text-align: justify;
     }
 
@@ -56,20 +58,39 @@ body {
         text-align: center;
         width: 100%;
     }
+/* CSS untuk sosial media */
+.social-media {
+    margin-top: 20px; /* Jarak atas untuk sosial media */
+}
 
-    @media (max-width: 767.98px) {
-        body {
-            background-size: 500%;
-            background-position: center top;
-        }
+.social-media a {
+    font-size: 24px; /* Ukuran font untuk ikon sosial media */
+    color: #333; /* Warna ikon sosial media */
+    text-decoration: none; /* Menghapus garis bawah dari link */
+}
 
-        .about-us-container {
-            padding: 20px;
-            margin: 20px auto;
-        }
+.social-media a:hover {
+    color: #007bff; /* Warna ikon saat hover */
+}
 
-        footer {
-            padding: 0.5rem;
-        }
-    }
+.navbar-nav.ms-auto {
+    margin-left: auto;
+}
 
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link {
+    transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #333;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #fff;
+    background-color: #343a40;
+    border-radius: 10px;
+}
