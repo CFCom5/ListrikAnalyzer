@@ -1,23 +1,23 @@
-        // Fungsi untuk menampilkan loading
-        function showLoading() {
-            document.getElementById('loading').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Mencegah scroll saat loading
-        }
+// Fungsi untuk menampilkan loading
+function showLoading() {
+    document.getElementById('loading').style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Mencegah scroll saat loading
+}
 
-        // Fungsi untuk menyembunyikan loading
-        function hideLoading() {
-            document.body.classList.add('loaded'); // Menambahkan kelas untuk efek transisi
-            setTimeout(function() {
-                document.getElementById('loading').style.display = 'none';
-                document.body.style.overflow = 'auto'; // Mengizinkan scroll setelah loading
-            }, 500); // Durasi transisi sama dengan waktu opacity transition
-        }
+// Fungsi untuk menyembunyikan loading
+function hideLoading() {
+    document.body.classList.add('loaded'); // Menambahkan kelas untuk efek transisi
+    setTimeout(function() {
+        document.getElementById('loading').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Mengizinkan scroll setelah loading
+    }, 500); // Durasi transisi sama dengan waktu opacity transition
+}
 
-        // Contoh penggunaan fungsi loading
-        document.addEventListener('DOMContentLoaded', function() {
-            showLoading();
-            setTimeout(hideLoading, 2000); // Menyembunyikan loading setelah 2 detik
-        });
+// Menggunakan window.onload untuk memastikan semua sumber daya dimuat
+window.onload = function() {
+    showLoading();
+    setTimeout(hideLoading, 2000); // Menyembunyikan loading setelah 2 detik
+};
 
         
 function toggleTokenPasangBaru() {
@@ -43,25 +43,8 @@ function toggleTokenPerubahanDaya() {
 }
 
 function hitungPasangBaru() {
-    var dayaElement = document.getElementById('dayaPasangBaru');
-    var jenisPembayaranElement = document.getElementById('jenisPembayaranPasangBaru');
-    var tokenElement = document.getElementById('tokenPasangBaru');
-    var errorDiv = document.getElementById('errorPasangBaru');
-
-    // Pengecekan apakah input daya dan jenis pembayaran telah diisi
-    if (!dayaElement.value || !jenisPembayaranElement.value) {
-        errorDiv.innerHTML = "Silakan pilih daya dan jenis pembayaran.";
-        errorDiv.style.display = 'block';
-        return;
-    } else if (jenisPembayaranElement.value === 'prabayar' && !tokenElement.value) {
-        errorDiv.innerHTML = "Silakan masukkan jumlah token untuk pembayaran prabayar.";
-        errorDiv.style.display = 'block';
-        return;
-    } else {
-        errorDiv.style.display = 'none';
-    }
-
-    // (lanjutkan dengan perhitungan seperti yang sudah ada di kode sebelumnya)
+    var daya = parseInt(document.getElementById('dayaPasangBaru').value);
+    var jenisPembayaran = document.getElementById('jenisPembayaranPasangBaru').value;
     var hargaPasang = 0;
     var token = 0;
     var adminFee = 1500;
@@ -150,22 +133,11 @@ function hitungPasangBaru() {
 
 
 function hitungPerubahanDaya() {
-    var dayaLamaElement = document.getElementById('dayaLama');
-    var dayaBaruElement = document.getElementById('dayaBaru');
-    var jenisPembayaranElement = document.getElementById('jenisPembayaranPerubahanDaya');
-    var tokenElement = document.getElementById('tokenPerubahanDaya');
+    var dayaLama = parseInt(document.getElementById('dayaLama').value);
+    var dayaBaru = parseInt(document.getElementById('dayaBaru').value);
     var errorDiv = document.getElementById('errorPerubahanDaya');
 
-    // Pengecekan apakah input daya lama, daya baru, dan jenis pembayaran telah diisi
-    if (!dayaLamaElement.value || !dayaBaruElement.value || !jenisPembayaranElement.value) {
-        errorDiv.innerHTML = "Silakan pilih daya lama, daya baru, dan jenis pembayaran.";
-        errorDiv.style.display = 'block';
-        return;
-    } else if (jenisPembayaranElement.value === 'prabayar' && !tokenElement.value) {
-        errorDiv.innerHTML = "Silakan masukkan jumlah token untuk pembayaran prabayar.";
-        errorDiv.style.display = 'block';
-        return;
-    } else if (parseInt(dayaLamaElement.value) > parseInt(dayaBaruElement.value)) {
+    if (dayaLama > dayaBaru) {
         errorDiv.innerHTML = "Daya lama tidak boleh lebih besar dari daya baru.";
         errorDiv.style.display = 'block';
         return;
