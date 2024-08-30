@@ -1,6 +1,5 @@
 body {
     background-image: url('../img/bg1.png');
-    background-size: cover;
     background-repeat: no-repeat;
     min-height: 130vh; /* Minimum height set to 100% of the viewport height */
     margin: 0;
