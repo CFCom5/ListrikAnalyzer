@@ -1,29 +1,29 @@
 // Fungsi untuk menampilkan loading
 function showLoading() {
     document.getElementById('loading').style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Mencegah scroll saat loading
+    document.body.style.overflow = 'hidden';
 }
 
 // Fungsi untuk menyembunyikan loading
 function hideLoading() {
-    document.body.classList.add('loaded'); // Menambahkan kelas untuk efek transisi
+    document.body.classList.add('loaded');
     setTimeout(function() {
         document.getElementById('loading').style.display = 'none';
-        document.body.style.overflow = 'auto'; // Mengizinkan scroll setelah loading
-    }, 500); // Durasi transisi sama dengan waktu opacity transition
+        document.body.style.overflow = 'auto';
+    }, 500);
 }
 
-// Menggunakan window.onload untuk memastikan semua sumber daya dimuat
+// Loading saat halaman dimuat
 window.onload = function() {
     showLoading();
-    setTimeout(hideLoading, 2000); // Menyembunyikan loading setelah 2 detik
+    setTimeout(hideLoading, 2000);
 };
 
-        
+// Toggle form token untuk Pasang Baru
 function toggleTokenPasangBaru() {
     var jenisPembayaran = document.getElementById('jenisPembayaranPasangBaru').value;
     var tokenDiv = document.getElementById('tokenPasangBaruDiv');
-
+    
     if (jenisPembayaran === 'prabayar') {
         tokenDiv.style.display = 'block';
     } else {
@@ -31,10 +31,11 @@ function toggleTokenPasangBaru() {
     }
 }
 
+// Toggle form token untuk Perubahan Daya
 function toggleTokenPerubahanDaya() {
     var jenisPembayaran = document.getElementById('jenisPembayaranPerubahanDaya').value;
     var tokenDiv = document.getElementById('tokenPerubahanDayaDiv');
-
+    
     if (jenisPembayaran === 'prabayar') {
         tokenDiv.style.display = 'block';
     } else {
@@ -42,113 +43,99 @@ function toggleTokenPerubahanDaya() {
     }
 }
 
+// Hitung biaya Pasang Baru
 function hitungPasangBaru() {
     var daya = parseInt(document.getElementById('dayaPasangBaru').value);
     var jenisPembayaran = document.getElementById('jenisPembayaranPasangBaru').value;
+    var tokenInput = document.getElementById('tokenPasangBaru');
+    var errorDiv = document.getElementById('errorPasangBaru');
     var hargaPasang = 0;
     var token = 0;
     var adminFee = 1500;
 
-    // Menentukan harga pasang berdasarkan daya
-    switch(daya) {
-        case 450:
-            hargaPasang = 421000;
-            break;
-        case 900:
-            hargaPasang = 843000;
-            break;
-        case 1300:
-            hargaPasang = 1218000;
-            break;
-        case 2200:
-            hargaPasang = 2062000;
-            break;
-        case 3500:
-            hargaPasang = 3391500;
-            break;
-        case 4400:
-            hargaPasang = 4263600;
-            break;
-        case 5500:
-            hargaPasang = 5329500;
-            break;
-        case 6600:
-            hargaPasang = 6395400;
-            break;
-        case 7700:
-            hargaPasang = 7461300;
-            break;
-        case 10600:
-            hargaPasang = 10271400;
-            break;
-        case 11000:
-            hargaPasang = 10659000;
-            break;
-        case 13200:
-            hargaPasang = 12790800;
-            break;
-        case 16500:
-            hargaPasang = 15988500;
-            break;
-        case 23000:
-            hargaPasang = 22287000;
-            break;
-        case 33000:
-            hargaPasang = 31977000;
-            break;
-        case 41500:
-            hargaPasang = 40213500;
-            break;
-        default:
-            hargaPasang = 0;
-    }
-
-    // Jika prabayar, tambahkan harga token dan admin fee
-    if (jenisPembayaran === 'prabayar') {
-        token = document.getElementById('tokenPasangBaru') ? parseInt(document.getElementById('tokenPasangBaru').value) : 0;
-        token += adminFee; // Tambahkan biaya administrasi pada token
-    }
-
-    var totalHarga = hargaPasang + token;
-
-    // Hitung PPN 11%
-    var ppn = totalHarga * 0.11;
-
-    // Hitung total harga setelah PPN
-    var totalHargaDenganPPN = totalHarga + ppn;
-
-    // Menampilkan hasil perhitungan
-    var penjelasan = "<strong>Harga Pemasangan Baru:</strong> Rp " + hargaPasang.toLocaleString('id-ID') + ".";
-    if (jenisPembayaran === 'prabayar' && token > 0) {
-        penjelasan += "<br><strong>Harga Token:</strong> Rp " + (token - adminFee).toLocaleString('id-ID') + ".";
-        penjelasan += "<br><strong>Biaya Administrasi:</strong> Rp " + adminFee.toLocaleString('id-ID') + ".";
-    }
-    penjelasan += "<br><strong>PPN 11%:</strong> Rp " + ppn.toLocaleString('id-ID') + ".";
-    penjelasan += "<br><strong>Total Harga:</strong> Rp " + totalHargaDenganPPN.toLocaleString('id-ID') + ".";
-
-    var resultDiv = document.getElementById('resultPasangBaru');
-    resultDiv.innerHTML = penjelasan;
-}
-
-
-
-function hitungPerubahanDaya() {
-    var dayaLama = parseInt(document.getElementById('dayaLama').value);
-    var dayaBaru = parseInt(document.getElementById('dayaBaru').value);
-    var errorDiv = document.getElementById('errorPerubahanDaya');
-
-    if (dayaLama > dayaBaru) {
-        errorDiv.innerHTML = "Daya lama tidak boleh lebih besar dari daya baru.";
+    // Validasi input
+    if (isNaN(daya) || jenisPembayaran === '') {
+        errorDiv.innerHTML = "Silakan pilih daya dan jenis pembayaran.";
+        errorDiv.style.display = 'block';
+        return;
+    } else if (jenisPembayaran === 'prabayar' && tokenInput && tokenInput.value === '') {
+        errorDiv.innerHTML = "Silakan masukkan jumlah token untuk pembayaran prabayar.";
         errorDiv.style.display = 'block';
         return;
     } else {
         errorDiv.style.display = 'none';
     }
 
+    // Harga pasang berdasarkan daya
+    switch(daya) {
+        case 450: hargaPasang = 421000; break;
+        case 900: hargaPasang = 843000; break;
+        case 1300: hargaPasang = 1218000; break;
+        case 2200: hargaPasang = 2062000; break;
+        case 3500: hargaPasang = 3391500; break;
+        case 4400: hargaPasang = 4263600; break;
+        case 5500: hargaPasang = 5329500; break;
+        case 6600: hargaPasang = 6395400; break;
+        case 7700: hargaPasang = 7461300; break;
+        case 10600: hargaPasang = 10271400; break;
+        case 11000: hargaPasang = 10659000; break;
+        case 13200: hargaPasang = 12790800; break;
+        case 16500: hargaPasang = 15988500; break;
+        case 23000: hargaPasang = 22287000; break;
+        case 33000: hargaPasang = 31977000; break;
+        case 41500: hargaPasang = 40213500; break;
+        default: hargaPasang = 0;
+    }
+
+    // Tambah token jika prabayar
+    if (jenisPembayaran === 'prabayar') {
+        token = tokenInput ? parseInt(tokenInput.value) : 0;
+        token += adminFee;
+    }
+
+    var totalHarga = hargaPasang + token;
+
+    // Tampilkan hasil
+    var penjelasan = "<strong>Harga Pemasangan Baru:</strong> Rp " + hargaPasang.toLocaleString('id-ID') + ".";
+    if (jenisPembayaran === 'prabayar' && token > 0) {
+        penjelasan += "<br><strong>Harga Token:</strong> Rp " + (token - adminFee).toLocaleString('id-ID') + ".";
+        penjelasan += "<br><strong>Biaya Administrasi:</strong> Rp " + adminFee.toLocaleString('id-ID') + ".";
+    }
+    penjelasan += "<br><strong>Total Harga:</strong> Rp " + totalHarga.toLocaleString('id-ID') + ".";
+    penjelasan += "<br><em>*Harga tidak termasuk PPN</em>";
+
+    document.getElementById('resultPasangBaru').innerHTML = penjelasan;
+}
+
+// Hitung biaya Perubahan Daya
+function hitungPerubahanDaya() {
+    var dayaLama = parseInt(document.getElementById('dayaLama').value);
+    var dayaBaru = parseInt(document.getElementById('dayaBaru').value);
     var jenisPembayaran = document.getElementById('jenisPembayaranPerubahanDaya').value;
-    var token = document.getElementById('tokenPerubahanDaya') ? parseInt(document.getElementById('tokenPerubahanDaya').value) : 0;
+    var tokenInput = document.getElementById('tokenPerubahanDaya');
+    var errorDiv = document.getElementById('errorPerubahanDaya');
     var adminFee = 1500;
 
+    // Validasi input
+    if (isNaN(dayaLama) || isNaN(dayaBaru) || jenisPembayaran === '') {
+        errorDiv.innerHTML = "Silakan pilih daya lama, daya baru, dan jenis pembayaran.";
+        errorDiv.style.display = 'block';
+        return;
+    } else if (jenisPembayaran === 'prabayar' && tokenInput && tokenInput.value === '') {
+        errorDiv.innerHTML = "Silakan masukkan jumlah token untuk pembayaran prabayar.";
+        errorDiv.style.display = 'block';
+        return;
+    } else if (dayaLama >= dayaBaru) {
+        errorDiv.innerHTML = "Daya baru harus lebih besar dari daya lama.";
+        errorDiv.style.display = 'block';
+        return;
+    } else {
+        errorDiv.style.display = 'none';
+    }
+
+    var token = tokenInput ? parseInt(tokenInput.value) : 0;
+
+    // Data biaya perubahan daya
     var biayaPerubahan = {
         "450-900": 421650,
         "450-1300": 796450,
@@ -269,31 +256,25 @@ function hitungPerubahanDaya() {
         "16500-41500": 24225000,
         "23000-33000": 9690000,
         "23000-41500": 17926500,
-        "33000-41500": 8236500,
-        };
+        "33000-41500": 8236500
+    };
 
-        var key = dayaLama + '-' + dayaBaru;
-        var tarif = biayaPerubahan[key] || 0;
-    
-        // Tambahkan harga token dan admin fee jika pembayaran prabayar
-        if (jenisPembayaran === 'prabayar' && token > 0) {
-            tarif += token + adminFee; // Tambahkan biaya administrasi pada token
-        }
-    
-        // Hitung PPN 11%
-        var ppn = tarif * 0.11;
-    
-        // Hitung total harga setelah PPN
-        var totalHargaDenganPPN = tarif + ppn;
-    
-        var penjelasan = "<strong>Biaya Perubahan Daya:</strong> Rp " + tarif.toLocaleString('id-ID') + ".";
-        if (jenisPembayaran === 'prabayar' && token > 0) {
-            penjelasan += "<br><strong>Harga Token:</strong> Rp " + (token - adminFee).toLocaleString('id-ID') + ".";
-            penjelasan += "<br><strong>Biaya Administrasi:</strong> Rp " + adminFee.toLocaleString('id-ID') + ".";
-        }
-        penjelasan += "<br><strong>PPN 11%:</strong> Rp " + ppn.toLocaleString('id-ID') + ".";
-        penjelasan += "<br><strong>Total Harga (Termasuk PPN):</strong> Rp " + totalHargaDenganPPN.toLocaleString('id-ID') + ".";
-    
-        var resultDiv = document.getElementById('resultPerubahanDaya');
-        resultDiv.innerHTML = penjelasan;
+    var key = dayaLama + "-" + dayaBaru;
+    var tarif = biayaPerubahan[key] || 0;
+
+    // Tambah token dan biaya admin jika prabayar
+    if (jenisPembayaran === 'prabayar' && token > 0) {
+        tarif += token + adminFee;
     }
+
+    // Tampilkan hasil
+    var penjelasan = "<strong>Biaya Perubahan Daya:</strong> Rp " + tarif.toLocaleString('id-ID') + ".";
+    if (jenisPembayaran === 'prabayar' && token > 0) {
+        penjelasan += "<br><strong>Harga Token:</strong> Rp " + token.toLocaleString('id-ID') + ".";
+        penjelasan += "<br><strong>Biaya Administrasi:</strong> Rp " + adminFee.toLocaleString('id-ID') + ".";
+    }
+    penjelasan += "<br><strong>Total Harga:</strong> Rp " + tarif.toLocaleString('id-ID') + ".";
+    penjelasan += "<br><em>*Harga tidak termasuk PPN</em>";
+
+    document.getElementById('resultPerubahanDaya').innerHTML = penjelasan;
+}
